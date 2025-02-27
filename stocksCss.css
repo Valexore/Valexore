@@ -1,0 +1,125 @@
+/* stock_analytics.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ... (Your existing styles from style.css) ... */
+
+.stock-analytics {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.stock-analytics > div {
+    background: var(--light);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+
+.stock-chart {
+    flex-basis: 60%;
+    min-width: 300px;
+}
+
+.stock-summary {
+    flex-basis: 35%;
+    min-width: 200px;
+}
+
+.stock-summary h2, .stock-chart h2, .stock-table h2 {
+    margin-bottom: 16px;
+    color: var(--dark);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--grey);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item p {
+    color: var(--dark-grey);
+}
+
+.summary-item span {
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.stock-table {
+    width: 100%;
+    background: var(--light);
+    border-radius: 20px;
+    padding: 24px;
+    overflow-x: auto;
+    margin-top: 24px;
+}
+
+.stock-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stock-table th, .stock-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+.stock-table th {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.stock-table tbody tr:hover {
+    background: var(--grey);
+}
+
+
+.item-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.item-box {
+    border: 1px solid var(--grey);
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    flex-basis: calc(20% - 20px); /* Adjust for spacing */
+    box-sizing: border-box;
+}
+
+.item-box img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.stock-details {
+    margin-top: 24px;
+    background: var(--light);
+    padding: 24px;
+    border-radius: 20px;
+}
+
+.stock-details h2 {
+    margin-bottom: 16px;
+}
+
+@media print {
+    .no-print {
+        display: none !important; 
+    }
+}

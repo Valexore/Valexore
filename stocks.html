@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stocksCss.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Stock Analytics</title>
+</head>
+
+<body>
+
+    <section id="sidebar">
+        <a href="index.html" class="brand">
+            <i class='bx bxs-face-mask'></i>
+            <span class="text">Unkown</span>
+        </a>
+        <ul class="side-menu top">
+			<li class="active">
+				<a href="index.html">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="stocks.html">
+					<i class='bx bx-bar-chart'></i>
+					<span class="text">Analytics P1</span>
+				</a>
+			</li>
+			<li>
+				<a href="index.html">
+					<i class='bx bx-bar-chart'></i>
+					<span class="text">Analytics P2</span>
+				</a>
+			</li>
+			<li>
+				<a href="index.html">
+					<i class='bx bx-task'></i>
+					<span class="text">Tasking</span>
+				</a>
+			</li>
+			<li>
+				<a href="index.html">
+					<i class='bx bx-border-none'></i>
+					<span class="text">Walapa</span>
+				</a>
+			</li>
+		</ul>
+        <ul class="side-menu">
+            <li><a href="#"><i class='bx bxs-cog'></i><span class="text">Settings</span></a></li>
+            <li><a href="#" class="logout"><i class='bx bxs-log-out-circle'></i><span class="text">Logout</span></a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu no-print'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <a href="#" class="notification"><i class='bx bxs-bell'></i><span class="num">8</span></a>
+            <a href="#" class="profile"><img src="img/Manjushage.png"></a>
+        </nav>
+
+        <main>
+            <div class="head-title no-print">
+                <div class="left">
+                    <h1>Stock Analytics</h1>
+                    <ul class="breadcrumb no-print">
+                        <li><a href="#">Analytics</a></li>
+                        <li><i class='bx bx-chevron-right'></i></li>
+                        <li><a class="active" href="#">Stocks</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-download" onclick="printReport()"><i class='bx bxs-cloud-download'></i><span
+                        class="text">Print Report</span></a>
+            </div>
+
+
+            <div class="stock-analytics">
+                <div class="stock-chart">
+                    <h2>Stock Price Over Time</h2>
+                    <canvas id="stockChart"></canvas>
+                </div>
+                <div class="stock-summary">
+                    <h2>Stock Summary</h2>
+                    <div class="summary-item">
+                        <p>Current Price:</p>
+                        <span id="currentPrice">$150.25</span>
+                    </div>
+                    <div class="summary-item">
+                        <p>Daily Change:</p>
+                        <span id="dailyChange">+2.50 (1.69%)</span>
+                    </div>
+                    <div class="summary-item">
+                        <p>Volume:</p>
+                        <span id="volume">1,250,000</span>
+                    </div>
+                    <div class="summary-item">
+                        <p>52 Week High:</p>
+                        <span id="high52">$180.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <p>52 Week Low:</p>
+                        <span id="low52">$120.50</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stock-table">
+                <h2>Stock Performance Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stock</th>
+                            <th>Symbol</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                            <th>Volume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apple Inc.</td>
+                            <td>AAPL</td>
+                            <td>$150.25</td>
+                            <td>+2.50 (1.69%)</td>
+                            <td>1,250,000</td>
+                        </tr>
+                        <tr>
+                            <td>Microsoft Corp.</td>
+                            <td>MSFT</td>
+                            <td>$300.50</td>
+                            <td>-1.75 (0.58%)</td>
+                            <td>980,000</td>
+                        </tr>
+                        <tr>
+                            <td>Amazon.com Inc.</td>
+                            <td>AMZN</td>
+                            <td>$3200.00</td>
+                            <td>+50.00 (1.59%)</td>
+                            <td>750,000</td>
+                        </tr>
+                        <tr>
+                            <td>Google (Alphabet Inc.)</td>
+                            <td>GOOGL</td>
+                            <td>$2800.75</td>
+                            <td>+15.25 (0.55%)</td>
+                            <td>800,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // stock_analytics.js
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('stockChart').getContext('2d');
+            const stockChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Stock Price',
+                        data: ['76', '35', '12', '299', '8', '54', '18', '91', '63', '22', '47', '105'], // Replace with actual stock data
+                        borderColor: 'rgba(54, 145, 230, 1)',
+                        backgroundColor: 'rgba(54, 145, 230, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Stock Price'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
