@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/knorr.png" type="image/png" >  
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="costumer.css">
+  <link rel="stylesheet" href="chatbotandWeather.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1><a href="index.html"><img src="img/VanTastic.png" alt="Van Terminal System"></a></h1>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#weather">Weather</a></li>
+        <li><a href="#traffic">Traffic</a></li>
+        <li><a href="#benefits">BENEFITS</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <button id="login-btn" class="login"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+    </div>
+  </header>
+
+
+  <!-- Ticket Ordering Section -->
+  <section id="ticket-ordering" class="section">
+    <h2>Order Your Ticket</h2>
+    <p class="section-description">
+      Book your trip with ease! Select your terminal, destination, and travel date. Choose your passenger type to see the fare.
+    </p>
+    <form id="ticketForm">
+      <div class="form-container">
+        <div class="form-inputs">
+          <div class="form-group">
+            <label for="terminal">Select Terminal:</label>
+            <select id="terminal" name="terminal" required>
+              <option value="manila">Manila Terminal</option>
+              <option value="quezon_city">Quezon City Terminal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="destination">Select Destination:</label>
+            <select id="destination" name="destination" required>
+              <option value="quezon_city">Quezon City</option>
+              <option value="sta_mesa">Sta. Mesa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="btn">Order Ticket</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Weather and Traffic Section -->
+  <section id="weather" class="section">
+    <h2>Weather and Traffic Update</h2>
+    <div class="current-time">
+      <p>Current Time in Philippines: <span id="philippines-time">Loading...</span></p>
+    </div>
+    <div class="weather-content">
+      <div class="weather-card">
+        <h3>Manila</h3>
+        <p class="weather-condition">Sunny</p>
+        <p class="weather-temperature">32°C</p>
+      </div>
+      <div class="weather-card">
+        <h3>Infanta</h3>
+        <p class="weather-condition">Partly Cloudy</p>
+        <p class="weather-temperature">28°C</p>
+      </div>
+    </div>
+    <div class="traffic-content">
+      <div class="traffic-card">
+        <h3>Manila to Infanta</h3>
+        <p class="traffic-condition">Moderate Traffic</p>
+        <p class="traffic-delay">Expected Delay: 15 mins</p>
+      </div>
+      <div class="traffic-card">
+        <h3>Infanta to Manila</h3>
+        <p class="traffic-condition">Light Traffic</p>
+        <p class="traffic-delay">No Delays</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="business-section" id="benefits">
+    <h1><strong>BENEFITS!</strong></h1>
+    <br>
+    
+    <!-- Image Boxes -->
+    <div class="images-wrapper">
+        <div class="image-box">
+            <img src="img/l1.png" alt="Company Logo">
+        </div>
+        <div class="image-box">
+            <img src="img/r1.png" alt="Business Graphic">
+        </div>
+    </div>
+    
+    <!-- Content Containers -->
+    <div class="contain-wrapper">
+        <div class="contained">
+            <div class="section-title"><strong>Business</strong></div>
+            <div class="benefits-grid">
+                <div class="benefit-item">Save Time</div>
+                <div class="benefit-item">Cost Saving</div>
+                <div class="benefit-item">Save Labor</div>
+                <div class="benefit-item">Reduce Errors</div>
+            </div>
+        </div>
+        <div class="contained">
+            <div class="section-title"><strong>Costumer</strong></div>
+            <div class="benefits-grid">
+                <div class="benefit-item">Save Time</div>
+                <div class="benefit-item">Efficiency</div>
+                <div class="benefit-item">24/7 Service</div>
+                <div class="benefit-item">Comfortable</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Chatbot Section -->
+<div class="chatbot">
+  <button id="chatbot-toggle" class="chatbot-btn">
+    <i class="fas fa-comments"></i>
+  </button>
+  <div class="chatbot-window">
+    <div class="chatbot-header">
+      <h3>Vancy</h3>
+      <button id="chatbot-close" class="close-btn">&times;</button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-messages">
+        <div class="message bot-message">
+          <div class="avatar">
+            <img src="img/logo.png" alt="Bot Avatar">
+          </div>
+          <div class="message-content">
+            <p>Hello! 👋 How can I assist you today?</p>
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Type your message here..." autocomplete="off">
+        <button id="chatbot-send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="menuxxx.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="weather.js"></script>
+</body>
+</html>
