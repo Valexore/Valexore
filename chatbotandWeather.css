@@ -161,7 +161,7 @@
 
 .message-content {
   padding: 10px 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   position: relative;
   word-wrap: break-word;
   line-height: 1.4;
@@ -181,17 +181,18 @@
 
 .chatbot-input-area {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 5px;
   border-top: 1px solid #eee;
+  margin-bottom: -5px;
 }
 
 #chatbot-input {
   flex: 1;
-  padding: 12px 15px;
+  padding: 10px 10px;
   border: 1px solid #ddd;
-  border-radius: 25px;
+  border-radius: 10px;
   font-size: 14px;
   outline: none;
   transition: all 0.3s ease;
@@ -254,23 +255,14 @@
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .chatbot {
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  .chatbot-window {
-    width: 90vw;
-    right: 5vw;
-    bottom: 80px;
-  }
-  
-  .chatbot-messages {
-    height: 50vh;
-  }
-}
+
+/* ----------------------------------------------------------------------------------------------------------- 
+   -----------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------*/
+
+
+
 
   /* Weather Section Styles */
 .weather-content {
@@ -356,3 +348,72 @@
 }
 
 
+
+/* Weather and Traffic Section */
+.current-time {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: var(--dark-gray);
+}
+
+.weather-content, .traffic-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.weather-card, .traffic-card {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--medium-gray);
+  text-align: center;
+}
+
+.weather-card h3, .traffic-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--teal);
+}
+
+.weather-card p, .traffic-card p {
+  font-size: 16px;
+  color: #333;
+  margin: 8px 0;
+}
+
+.weather-temperature {
+  font-size: 24px !important;
+  font-weight: 600;
+  color: var(--teal) !important;
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------------- 
+   -----------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------------*/
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .chatbot {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chatbot-window {
+    width: 90vw;
+    right: 5vw;
+    bottom: 10px;
+    height: 500px;
+  }
+  .chatbot-input-area {
+    margin-bottom: -90px;
+  }
+  .chatbot-messages {
+    height: 50vh;
+  }
+}

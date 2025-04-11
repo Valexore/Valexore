@@ -93,29 +93,3 @@ routeCards2.forEach((card, index) => {
 
 
 
- // Scroll Animations
-  // Intersection Observer for Scroll Animations
-  const animateElements = document.querySelectorAll('[data-animate]');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const animation = entry.target.getAttribute('data-animate');
-        if (entry.isIntersecting) {
-          // Add animation class when element is in view
-          entry.target.classList.add(animation);
-        } else {
-          // Remove animation class when element is out of view
-          entry.target.classList.remove(animation);
-        }
-      });
-    },
-    {
-      threshold: 0.1, // Trigger when 10% of the element is visible
-    }
-  );
-
-  // Observe all elements with data-animate attribute
-  animateElements.forEach((element) => {
-    observer.observe(element);
-  });

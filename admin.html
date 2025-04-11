@@ -162,16 +162,7 @@
   </section>
 
 	<script>
-		function printReport() {
-    window.print();
-}
-function printReport() {
-    const printContent = document.querySelector('.stock-analytics').cloneNode(true);
-    printContent.classList.remove('no-print'); 
-    document.body.appendChild(printContent);
-    window.print();
-    document.body.removeChild(printContent); 
-}
+		
 
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 

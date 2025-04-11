@@ -25,38 +25,51 @@ body {
   background-color: var(--white);
   color: #333;
   line-height: 1.6;
-
+  margin: 0;
+  padding: 0;
   scroll-snap-type: y mandatory;
 }
 
-header {
-  font-family: var(--lato);
-  position: sticky;
 
+
+header {
+  position: fixed;
+  width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: 1001;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10%;
+  padding: 25px 5%;
   color: var(--white);
-  background-color: var(--white);
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
-  
+  background-color: transparent;
+  transition: 
+  background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), /* Smooth easing */
+  box-shadow 0.5s ease,
+  transform 0.3s ease;
+  transform: translateY(0);
+  will-change: background-color, box-shadow; /* Optimize for GPU */
+  gap: 10px;
+  scroll-snap-align: start;
 }
 
-/* Show header when scrolled past hero section */
 header.scrolled {
-  opacity: 1; /* Fully visible */
-  border-bottom: 2px solid #000;
-  background-color: var(--white); /* Gray background when scrolled */
+  background-color: var(--white);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px); /* Optional: Adds a subtle blur effect */
+  transform: translateY(0) scale(1.02); /* Tiny "pop" effect */
+}
+
+header.scrolled nav ul li a {
+  color: #000000;
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
 header .logo h1 {
   font-size: 28px; /* Slightly larger font size */
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   color: #000000; /* Black text for visibility */
 }
 
@@ -64,12 +77,16 @@ header .logo h1 img {
   width: 200px; /* Adjust the width of the logo image */
   height: 40px; /* Adjust the height of the logo image */
   transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effect */
+  flex: 1; /* Allows logo to take necessary space */
+  min-width: 200px; /* Prevent logo from shrinking too much */  
 }
 
 header .logo h1:hover img {
   transform: scale(1.1); /* Enlarge the image on hover */
   opacity: 0.9; /* Optional: fade effect on hover */
 }
+
+
 
 
 /* Hamburger Menu Styles */
@@ -92,14 +109,15 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif; 
 }
 
 nav ul li a {
-  color: #000000;
+  color: #fdfdfd;  
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 100px;
   transition: color 0.3s ease;
+  position: relative;
 }
 
 nav ul li a.active {
@@ -114,8 +132,10 @@ nav ul li a:hover {
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  gap: 30px;
+  margin-right: auto; /* Push to the left */
+  align-items: center; /* Vertically centers items */
+  
 }
 
 header nav ul li a {
@@ -123,87 +143,29 @@ header nav ul li a {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
+  
 }
 
 
 header nav ul li a.active {
-  color: var(--teal); /* Highlight active link */
+  color: var(--yilo); /* Highlight active link */
 }
 
 header nav ul li a:hover {
-  color: var(--teal); /* Change color on hover */
+  color: var(--yilo); /* Change color on hover */
 }
 
-/* Auth Buttons Styles */
-.auth-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.auth-buttons button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgba(255, 0, 0, 0);
-  border: solid 2px;
-  color: #000000;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.auth-buttons button:hover {
-  background-color: var(--teal);
-  color: var(--white);
-}
-
-/* Specific Styles for Login and Register Buttons */
-.auth-buttons .login,
-.auth-buttons .regi {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: rgba(255, 0, 0, 0);
-  border: solid 2px;
-  color: #000000;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.auth-buttons .login:hover,
-.auth-buttons .regi:hover {
-  background-color: var(--teal);
-  color: var(--white);
-}
-
-.hero-content button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--teal);
-  color: #fff;
-  cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.hero-content button:hover {
-  background-color: var(--teal);
-}
 
 .hero {
-  background-color: var(--white);
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 10vw;
-  width: 100%;
-  margin-top: -80px; /* Pull the hero section up to overlap with the header */
-  padding-top: 80px; /* Adjust based on header height */
-  box-shadow: 0 -5px 10px -5px rgba(0, 0, 0, 0.2);
-
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 10px 100px -5px rgba(0, 0, 0, 0.178);
+  
 }
 
 .hero-content h2 {
@@ -867,17 +829,7 @@ main{
 
 
 
-.hero {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: inset 0 130px 10px -5px rgba(0, 0, 0, 0.2);
 
-}
 
 @keyframes bgZoomIn {
   from {
@@ -994,71 +946,6 @@ svg path {
 
 
 
-/* Scroll Animation Classes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Animation Classes */
-.animate-fadeInUp {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.animate-fadeInLeft {
-  animation: fadeInLeft 1s ease-out forwards;
-}
-
-.animate-fadeInRight {
-  animation: fadeInRight 1s ease-out forwards;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-/* Hide elements initially */
-[data-animate] {
-  opacity: 0;
-}
-
 
 
 
@@ -1106,9 +993,6 @@ svg path {
     display: flex; /* Show hamburger menu */
   }
 
-  .auth-buttons {
-    display: none; /* Hide auth buttons outside nav */
-  }
 
   nav {
     display: none; /* Hide navigation by default */
@@ -1140,20 +1024,8 @@ svg path {
     text-align: center; /* Center-align text */
   }
 
-  /* Show Auth Buttons Inside Nav for Mobile */
-  nav .auth-buttons {
-    display: flex; /* Show auth buttons inside nav */
-    flex-direction: column; /* Stack buttons vertically */
-    width: 100%; /* Full width */
-    gap: 10px; /* Space between buttons */
-    margin-top: 20px; /* Add space between menu links and buttons */
-    align-items: center; /* Center-align buttons */
-  }
+ 
 
-  nav .auth-buttons button {
-    width: 80%; /* Adjust button width */
-    margin-left: 0; /* Remove left margin */
-  }
 
   .hero-content h2 {
     font-size: 36px; /* Adjust font size for smaller screens */

@@ -1,27 +1,7 @@
-// Seat Booking Logic
-const seats = document.querySelectorAll('.seat');
-const bookSeatBtn = document.getElementById('book-seat');
-let selectedSeat = null;
-
-seats.forEach((seat) => {
-  seat.addEventListener('click', () => {
-    if (selectedSeat) {
-      selectedSeat.classList.remove('selected');
-    }
-    seat.classList.add('selected');
-    selectedSeat = seat;
-  });
-});
-
-bookSeatBtn.addEventListener('click', () => {
-  if (selectedSeat) {
-    alert(`Seat ${selectedSeat.dataset.seat} booked successfully!`);
-  } else {
-    alert('Please select a seat first.');
-  }
-});
-
-
+//modal
+//showpass
+//scroll animate
+//tickets
 
 
 // Modal Logic
@@ -121,3 +101,167 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+
+
+
+ // Scroll Animations
+  // Intersection Observer for Scroll Animations
+  const animateElements = document.querySelectorAll('[data-animate]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const animation = entry.target.getAttribute('data-animate');
+        if (entry.isIntersecting) {
+          // Add animation class when element is in view
+          entry.target.classList.add(animation);
+        } else {
+          // Remove animation class when element is out of view
+          entry.target.classList.remove(animation);
+        }
+      });
+    },
+    {
+      threshold: 0.1, // Trigger when 10% of the element is visible
+    }
+  );
+
+  // Observe all elements with data-animate attribute
+  animateElements.forEach((element) => {
+    observer.observe(element);
+  });
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    const seatBookingSection = document.getElementById('book-seat');
+    
+    // Function to check scroll position
+    function checkScroll() {
+      const seatBookingPosition = seatBookingSection.getBoundingClientRect().top;
+      const scrollPosition = window.scrollY;
+      
+      // When the seat-booking section reaches the top of the viewport
+      if (scrollPosition > seatBookingPosition + 350) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    
+    // Run on initial load
+    checkScroll();
+    
+    // Run on scroll
+    window.addEventListener('scroll', checkScroll);
+  });
+
+
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------------------------------------------------
+
+
+// Rating System Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle star rating selection
+  const starRatings = document.querySelectorAll('.star-rating i');
+  
+  starRatings.forEach(star => {
+    star.addEventListener('click', function() {
+      const rating = parseInt(this.getAttribute('data-rating'));
+      const starContainer = this.parentElement;
+      const ratingText = starContainer.querySelector('.rating-text');
+      
+      // Update star display
+      starContainer.querySelectorAll('i').forEach((s, index) => {
+        if (index < rating) {
+          s.classList.remove('far');
+          s.classList.add('fas', 'active');
+        } else {
+          s.classList.remove('fas', 'active');
+          s.classList.add('far');
+        }
+      });
+      
+      // Update rating text
+      const ratingTexts = [
+        "Poor",
+        "Fair",
+        "Good",
+        "Very Good",
+        "Excellent"
+      ];
+      ratingText.textContent = ratingTexts[rating - 1];
+      
+      // Store the rating on the container for later use
+      starContainer.setAttribute('data-selected-rating', rating);
+    });
+  });
+  
+  // Handle rating confirmation
+  const confirmButtons = document.querySelectorAll('.confirm-rating');
+  
+  confirmButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const ratingSection = this.closest('.rating-section');
+      const starContainer = ratingSection.querySelector('.star-rating');
+      const commentInput = ratingSection.querySelector('.rating-comment-input');
+      const selectedRating = starContainer.getAttribute('data-selected-rating');
+      
+      if (!selectedRating) {
+        alert('Please select a rating before confirming');
+        return;
+      }
+      
+      // Create the confirmed rating display
+      const ratingDisplay = document.createElement('div');
+      ratingDisplay.className = 'rating-display';
+      
+      // Add stars
+      const starsDiv = document.createElement('div');
+      starsDiv.className = 'stars';
+      for (let i = 0; i < 5; i++) {
+        const star = document.createElement('i');
+        star.className = i < selectedRating ? 'fas fa-star' : 'far fa-star';
+        starsDiv.appendChild(star);
+      }
+      ratingDisplay.appendChild(starsDiv);
+      
+      // Add comment if exists
+      if (commentInput.value) {
+        const commentP = document.createElement('p');
+        commentP.className = 'rating-comment';
+        commentP.textContent = `"${commentInput.value}"`;
+        ratingDisplay.appendChild(commentP);
+      }
+      
+      // Add confirmed notice
+      const noticeP = document.createElement('p');
+      noticeP.className = 'rating-notice';
+      noticeP.innerHTML = '<i class="fas fa-lock"></i> Rating confirmed';
+      
+      // Replace the rating input with the display
+      ratingSection.innerHTML = '';
+      ratingSection.classList.add('confirmed');
+      ratingSection.appendChild(ratingDisplay);
+      ratingSection.appendChild(noticeP);
+      
+      // Here you would typically send the rating to server
+      // For now we'll just simulate it
+      console.log('Rating submitted:', {
+        rating: selectedRating,
+        comment: commentInput.value
+      });
+    });
+  });
+});

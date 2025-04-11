@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="img/knorr.png" type="image/png" >  
   <title>Van Terminal System</title>
+  <link rel="stylesheet" href="scrollStyle.css">
   <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,6 +14,13 @@
 </head>
 
 <body>
+   <!-- Hero Section -->
+<section class="hero" >
+  <div class="title">
+</div>
+</section>
+
+
   <header>
     <div class="logo">
       <h1><img src="img/VanTastic.png" alt="Van Terminal System"></h1>
@@ -26,36 +34,28 @@
     <!-- Navigation Menu -->
     <nav id="nav-menu">
       <ul>
+        <li><a href="#book-seat">LOGIN / REGISTER </a></li>
         <li><a href="#routes">ROUTES</a></li>
         <li><a href="#fare">FARE</a></li>
-        <li><a href="#organization">ORG</a></li>
+        <li><a href="#organization">ORGANAZATION</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li><a href="customer-dashboard.html">customer</a></li>
+        <li><a href="manager.html">manager</a></li>
         <li><a href="admin.html">admin</a></li>
       </ul>
     </nav>
-    <!-- Auth Buttons -->
-    <div class="auth-buttons">
-      <button data-modal="login-modal" class="login"><i class="fas fa-sign-in-alt"></i> Login</button>
-      <button data-modal="register-modal" class="regi"><i class="fas fa-user-plus"></i> Register</button>
-    </div>
+    
   </header>
 
 
- <!-- Hero Section -->
-<section class="hero" >
-  <div class="title">
-    
-</div>
 
-</section>
 
 
   <!-- This is bugged bruh -->
 <div id="book-seat"></div>
 
   <!-- sendo -->
-  <section class="api-power-section">
+  <section class="api-power-section" data-animate="animate-fadeInLeft">
     <div class="content-left">
         <div class="section-header">
             <h1>Booking</h1>
@@ -80,27 +80,34 @@
 </section>
 
 
-
-
-  <!-- Slide -->
-  <div class="slider" reverse="true" style="
+<!-- Add no-snap class to non-section elements -->
+<div class="slider no-snap" reverse="true" style="
 --width: 250px;
 --height: 50px;
 --quantity: 10;
 ">
-    <div class="list">
-      <div class="item" style="--position: 1"><img src="img/safe.png" alt=""></div>
-      <div class="item" style="--position: 2"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 3"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 4"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 5"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 6"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 7"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 8"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 9"><img src="img/caution.png" alt=""></div>
-      <div class="item" style="--position: 10"><img src="img/caution.png" alt=""></div>
-    </div>
-  </div>
+ <!-- Slide -->
+ <div class="slider" reverse="true" style="
+ --width: 250px;
+ --height: 50px;
+ --quantity: 10;
+ ">
+     <div class="list">
+       <div class="item" style="--position: 1"><img src="img/safe.png" alt=""></div>
+       <div class="item" style="--position: 2"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 3"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 4"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 5"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 6"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 7"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 8"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 9"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 10"><img src="img/caution.png" alt=""></div>
+     </div>
+   </div>
+</div>
+
+  
 
 
   <section id="routes" class="section" >

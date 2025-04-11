@@ -296,29 +296,6 @@ body {
 	object-fit: cover;
 	border-radius: 50%;
 }
-#content nav .switch-mode {
-	display: block;
-	min-width: 50px;
-	height: 25px;
-	border-radius: 25px;
-	background: var(--grey);
-	cursor: pointer;
-	position: relative;
-}
-#content nav .switch-mode::before {
-	content: '';
-	position: absolute;
-	top: 2px;
-	left: 2px;
-	bottom: 2px;
-	width: calc(25px - 4px);
-	background: var(--violet);
-	border-radius: 50%;
-	transition: all .3s ease;
-}
-#content nav #switch-mode:checked + .switch-mode::before {
-	left: calc(100% - (25px - 4px) - 2px);
-}
 /* NAVBAR */
 
 
@@ -363,21 +340,6 @@ body {
 	pointer-events: unset;
 }
 
-/* Download Button*/
-#content main .head-title .btn-download {
-	height: 36px;
-	padding: 0 16px;
-	border-radius: 36px;
-	background: var(--violet);
-	color: var(--light);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	grid-gap: 10px;
-	font-weight: 500;
-}
-
-
 
 
 #content main .box-info {
@@ -415,18 +377,6 @@ body {
 	background: var(--light-green);
 	color: var(--green);
 }
-#content main .box-info li:nth-child(4) .bx {
-	background: var(--light-blue);
-	color: var(--blue);
-}
-#content main .box-info li:nth-child(5) .bx {
-	background: var(--light-red);
-	color: var(--red);
-}
-#content main .box-info li:nth-child(6) .bx {
-	background: var(--light-brown);
-	color: var(--brown);
-}
 
 
 #content main .box-info li .text h3 {
@@ -437,8 +387,6 @@ body {
 #content main .box-info li .text p {
 	color: var(--dark);	
 }
-
-
 
 
 
